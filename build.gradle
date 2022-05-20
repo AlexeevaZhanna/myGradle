@@ -1,28 +1,50 @@
+
 plugins {
     id 'java'
+    id 'org.gretty' version '3.0.7'
     id 'application'
+    id 'war'
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenLocal()
     mavenCentral()
+
 }
 
 dependencies {
     // https://mvnrepository.com/artifact/joda-time/joda-time
     implementation 'joda-time:joda-time:2.10.14'
-
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+// https://mvnrepository.com/artifact/org.gretty/gretty-runner-jetty
+    implementation 'org.gretty:gretty-runner-jetty:3.0.7'
+
+// https://mvnrepository.com/artifact/io.openliberty.features/servlet-3.1
+    implementation 'io.openliberty.features:servlet-3.1:22.0.0.5'
+
+
+
 }
 
 test {
     useJUnitPlatform()
 }
+
+test {
+    systemProperty "file.ecoding", "utf-8"
+}
 application {
 mainClassName ("ru.my.test.Time")
 }
 
+task myPrint(){
+    System.out.println("New project")
+}
+
+gretty {
+    httpPort = 8080
+    contextPath = '/MyWebApp'
+}
