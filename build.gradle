@@ -24,27 +24,25 @@ dependencies {
 
 // https://mvnrepository.com/artifact/io.openliberty.features/servlet-3.1
     implementation 'io.openliberty.features:servlet-3.1:22.0.0.5'
-
-
+    // https://mvnrepository.com/artifact/javax.servlet/jstl
+    implementation 'javax.servlet:jstl:1.2'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation 'mysql:mysql-connector-java:8.0.29'
 
 }
 
 test {
     useJUnitPlatform()
 }
-
-test {
-    systemProperty "file.ecoding", "utf-8"
-}
 application {
 mainClassName ("ru.my.test.Time")
 }
 
 task myPrint(){
-    System.out.println("New project")
+    System.out.println("Новый проект")
 }
 
 gretty {
-    httpPort = 8080
-    contextPath = '/MyWebApp'
+    httpPort = 8081
+    contextPath = '/OnlineMagazinName'
 }

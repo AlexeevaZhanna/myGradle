@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,5 +8,26 @@
 <body>
 <h1> Добро пожаловать! </h1>
 <p><a href="./authorization.html"> Авторизируйтесь</a></p>
+<h1>Информация о товаре</h1>
+<p>Поиск товаров</p>
+
+<div>
+    <form action="./product" method="get">
+        <label for="name">Введите наименование товара:</label><br>
+        <input type="text" id="name=" name="name"><br>
+        <label for="category">Выбор категории товара:</label><br>
+        <input type="text" id="category" name="category"><br>
+
+        <input type="submit" value="Найти">
+
+    </form>
+</div>
+
+<div>
+    <p><a href="./ProductAdd.html">Форма добавления товаров</a></p>
+</div>
+
+<p><a href="./product?name=cheese">Сыр</a></p>
+<p><a href="./product?name=chicken">Курица</a></p>
 </body>
 </html>
