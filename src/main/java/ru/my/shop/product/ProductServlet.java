@@ -12,16 +12,13 @@ import java.util.Map;
 @WebServlet(urlPatterns = "/product")
 public class ProductServlet extends HttpServlet {
 
+
     public ProductServlet() {
         System.out.println("Running");
     }
 
     private static final long serialVersionUID = 1L;
-    public static final String CONTENT_TYPE = "text/html;charset=UTF-8";
-    public static final String NAME = "name";
 
-    public static final String CATEGORY = "category";
-    public static final String PRICE = "price";
     private Map<String, Product> products = null;
 
     @Override
@@ -30,43 +27,40 @@ public class ProductServlet extends HttpServlet {
         products = ProductService.getAll();
     }
 
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        response.setContentType(CONTENT_TYPE);
-        String productName = request.getParameter(NAME);
+        String productName = request.getParameter("name");
+
+        response.setContentType("text/html;charset=UTF-8");
 
         Product foundProduct = products.get(productName);
-
-       // response.sendRedirect("http://yandex.ru");
 
         ServletHelper.populateHtmlBegin(response);
 
         if (foundProduct != null) {
-            response.getWriter().append("<p>Название: " + foundProduct.getName() + " Цена: " +
-                    foundProduct.getPrice() + " Категория: " + foundProduct.getCategory() + "</p>");
-            response.getWriter().append("<p><a href=\"./addToBasket?name="  + foundProduct.getName() + "\">Добавить в корзину</a></p>");
+            response.getWriter().append("<p> Товар: " + foundProduct.getName() + " Цена: " + foundProduct.getPrice() +" Категория " +
+                    foundProduct.getCategory() +  "</p>");
+            response.getWriter().append("<p><a href=\"./addToBasket?name="  + foundProduct.getName() + "\">В корзину</a></p>");
         } else {
-            response.getWriter().append("<p>Неизвестный продукт</p>");
+            response.getWriter().append("<p>Неизвестный продукт<p>");
         }
+
         ServletHelper.populateHtmlEnd(response);
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        response.setContentType(CONTENT_TYPE);
-        String pName = request.getParameter(NAME);
-        String pPrice = request.getParameter(PRICE);
-        String pCategory = request.getParameter(CATEGORY);
+        response.setContentType("text/html;charset=UTF-8");
+        String pName = request.getParameter("name");
+        String pPrice = request.getParameter("price");
+        String pCategory = request.getParameter("category");
 
-        Product product = new Product(pName, Double.valueOf(pPrice), pCategory);
+        Product product = new Product(pName ,Double.valueOf(pPrice), pCategory);
         ProductService.add(product);
 
         ServletHelper.populateHtmlBegin(response);
         response.getWriter().append("<p>Продукт добавлен</p>");
         ServletHelper.populateHtmlEnd(response);
     }
-
-
 }
-

@@ -10,8 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class TestMySqlConnect {
-    
+class TestMySqlConnect {
+
 
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, SQLException {
 
@@ -19,7 +19,7 @@ public class TestMySqlConnect {
         try{
             con = getConnection();
             Product p = new Product("Рис", 150 , "Бакалея" );
-              createNewProduct(con, p);
+            createNewProduct(con, p);
             // updateProduct(con, "Рис",  p.getPrice()- p.getPrice() * 15/100);
 
         } finally {
@@ -43,7 +43,13 @@ public class TestMySqlConnect {
         int row = st.executeUpdate(query);
         System.out.println(row);
     }
-
+    static void selectNameProduct(Connection con, String nameProduct) throws SQLException {
+        Statement st = con.createStatement();
+        String query = "SELECT * FROM products WHERE NAME = " +  nameProduct + "\";";
+        System.out.println(query);
+        int row = st.executeUpdate(query);
+        System.out.println(row);
+    }
     private static Connection getConnection() {
         Properties props = getProperties();
         String url = props.getProperty("url");
@@ -52,11 +58,11 @@ public class TestMySqlConnect {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-          Connection con = DriverManager.getConnection(url,
+            Connection con = DriverManager.getConnection(url,
                     username, password);
 
-               System.out.println("Connection successful");
-        return con;
+            System.out.println("Connection successful");
+            return con;
 
         } catch (Exception ex) {
             System.out.println("Connection failed");
@@ -73,5 +79,4 @@ public class TestMySqlConnect {
             e.printStackTrace();
         }
         return props;
-    }
-}
+    }}

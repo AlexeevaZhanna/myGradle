@@ -18,7 +18,6 @@ public class ViewBasketServlet extends HttpServlet {
             "  <tr>\n" +
             "    <th>Название</th>\n" +
             "    <th>Цена</th>\n" +
-            "    <th>Категория</th>\n" +
             "    <th>Удалить</th>\n" +
             "  </tr>";
 

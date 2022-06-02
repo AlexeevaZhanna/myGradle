@@ -14,17 +14,16 @@ public class ProductService {
     }
 
     public static synchronized Map<String, Product> getAll() {
-       return products;
+        return products;
     }
 
-    public static Product get(String name) {
-
-        return null;
+    public synchronized  Product get(String name) {
+        return products.get(name);
     }
 
     public static Map<String, Product> getByNameAndCategory(String name,  String category) {
 
-        return null;
+        return products;
     }
 
     public static boolean delete(String name) {
