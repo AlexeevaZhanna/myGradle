@@ -1,4 +1,6 @@
-package ru.my.shop.product;
+package ru.my.shop.Servlet;
+
+import ru.my.shop.Product.Product;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +14,6 @@ import java.util.List;
 @WebServlet(urlPatterns = "/viewBasket")
 public class ViewBasketServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    public static final String CONTENT_TYPE = "text/html;charset=UTF-8";
-
     public static final String TABLE_BEGIN = "<table style=\" border: 1px solid white; border-collapse: collapse;\">\n" +
             "  <tr>\n" +
             "    <th>Название</th>\n" +
@@ -25,7 +25,7 @@ public class ViewBasketServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        response.setContentType(CONTENT_TYPE);
+        response.setContentType("text/html;charset=UTF-8");
         ServletHelper.populateHtmlBegin(response);
 
         HttpSession httpSession = request.getSession();
@@ -42,6 +42,7 @@ public class ViewBasketServlet extends HttpServlet {
                     "    <td>" + p.getPrice() + "</td>\n" +
                     "    <td><a href= \"./remove?id=" + i +
                     "\">Удалить</a></td>\n" + "  </tr>");
+            response.getWriter().append("<p><button><a href=\"./buy\">Купить</a></button></p>");
         }response.getWriter().append(TABLE_END);
         } else {
             response.getWriter().append("<p>Ваша корзина пуста!</p>");
@@ -49,5 +50,5 @@ public class ViewBasketServlet extends HttpServlet {
 
         ServletHelper.populateHtmlEnd(response);
     }
-}
+    }
 

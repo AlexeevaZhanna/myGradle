@@ -1,4 +1,4 @@
-package ru.my.shop.product;
+package ru.my.shop.Servlet;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

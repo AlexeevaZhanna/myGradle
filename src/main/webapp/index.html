@@ -6,30 +6,37 @@
     <title>Онлайн-магазин</title>
 </head>
 <body>
-<h1> Добро пожаловать! </h1>
-<p><a href="./authorization.html"> Авторизируйтесь</a></p>
-<h1>Информация о товаре</h1>
-<p>Поиск товаров</p>
+<h1> ДОБРО ПОЖАЛОВАТЬ! </h1>
+<p><a href="./person/registration.jsp"> Регистрация</a></p>
+<p><a href="./person/authorization.jsp"> Авторизация</a></p>
+
 
 <div>
+    <p><h3>ПОИСК</h3></p>
     <form action="./product" method="get">
         <label for="name">Введите наименование товара:</label><br>
         <input type="text" id="name=" name="name"><br>
-        <label for="category">Выбор категории товара:</label><br>
-        <input type="text" id="category" name="category"><br>
-
+        <label for="category">Введите категорию товара:</label><br>
+        <input type="text" id="category=" name="category"><br>
         <input type="submit" value="Найти">
 
     </form>
+
+    <div>
+        <p><a href="./viewBasket">Корзина</a></p>
+    </div>
 </div>
 
+<h3> КАТАЛОГ</h3>
+<p><a href="./product?category=Говядина">Говядина</a></p>
+<p><a href="./product?category=Курица">Курица</a></p>
+<p><a href="./product?category=Молоко">Молоко</a></p>
+<p><a href="./product?category=Конфеты">Курица</a></p>
+<p><a href="./product?category=Сыр">Сыр</a></p>
+<p><a href="./product?category=Хлеб">Хлеб</a></p>
+
 <div>
-    <p><a href="./ProductAdd.html">Форма добавления товаров</a></p>
+    <p><a href=./management.html>Управление магизином</a></p>
 </div>
-<div>
-    <p><a href="./viewBasket">Корзина</a></p>
-</div>
-<p><a href="./product?name=cheese">Сыр</a></p>
-<p><a href="./product?name=chicken">Курица</a></p>
 </body>
 </html>
