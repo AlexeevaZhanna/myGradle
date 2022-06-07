@@ -1,7 +1,6 @@
-package ru.my.shop.product;
+package ru.my.shop.Product;
 
 public class Product {
-
     private String name;
     private double price;
     private String category;
@@ -12,6 +11,15 @@ public class Product {
         this.category = category;
     }
 
+    public Product(String nameProduct, String name, String category) {
+        this.name = name;
+        this.category = category;
+    }
+
+
+    public Product(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;

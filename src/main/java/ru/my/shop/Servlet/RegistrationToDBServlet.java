@@ -1,6 +1,7 @@
-package ru.my.shop.product;
+package ru.my.shop.Servlet;
 
-import ru.my.shop.person.Person;
+import ru.my.shop.Person.PersonService;
+import ru.my.shop.Person.Person;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +30,7 @@ public class RegistrationToDBServlet extends HttpServlet {
         Connection con = null;
       try{
             try {
-                MySqlConnect.insertPerson(p);
+                PersonService.insertPerson(p);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

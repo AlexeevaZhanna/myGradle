@@ -1,52 +1,55 @@
-package ru.my.shop.product;
+package ru.my.shop.Servlet;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
+import ru.my.shop.Product.Product;
+import ru.my.shop.Product.ProductService;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet(urlPatterns = "/addToBasket")
     public class AddBasketServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    public static final String CONTENT_TYPE = "text/html;charset=UTF-8";
-    public static final String NAME = "name";
-    private Map<String, Product> products = null;
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        products = ProductService.getAll();
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
-            response.setContentType(CONTENT_TYPE);
-            String pName = request.getParameter(NAME);
+            String pName = request.getParameter("name");
+            String pCategory = request.getParameter("category");
+           int i = 0;
+        try {
+           ResultSet res = ProductService.selectNameCategoryProduct(pName, pCategory);
+           while (res.next()){
+            i++;
 
-           Product selectProduct = products.get(pName);
-            System.out.println(selectProduct);
+        } }catch (SQLException e) {
+            e.printStackTrace();
+        } //Product selectProduct = new Product( );
+      //  selectProduct.getName();
 
-           Object myBasket = request.getSession().getAttribute("myBasket");
+
+        Object myBasket = request.getSession().getAttribute("myBasket");
             if (myBasket !=null) {
                 List<Product> list = (List<Product>)myBasket;
-                list.add(selectProduct);
+            //   list.add(selectProduct);
             } else {
                 List<Product> list = new ArrayList();
-                list.add(selectProduct);
-                request.getSession().setAttribute("myBasket", list);
+           //    list.add(selectProduct);
+          //      request.getSession().setAttribute("myBasket", list);
             }
 
             ServletHelper.populateHtmlBegin(response);
 
            response.getWriter().append("<p>Товар добавлен в корзину</p>");
+
             ServletHelper.populateHtmlEnd(response);
         }
 

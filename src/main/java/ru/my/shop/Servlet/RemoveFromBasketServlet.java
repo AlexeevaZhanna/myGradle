@@ -1,4 +1,4 @@
-package ru.my.shop.product;
+package ru.my.shop.Servlet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 
 @WebServlet(urlPatterns = "/remove")
@@ -20,7 +19,7 @@ import java.util.List;
 
         Object myBasket = request.getSession().getAttribute("myBasket");
 
-        BasketService.removeFromBasket( (int)id, (List <Product>) myBasket);
+      //  BasketService.removeFromBasket( (int)id, (List <Product>) myBasket);
 
         RequestDispatcher rd = request.getRequestDispatcher("/viewBasket");
         rd.include(request, response);

@@ -4,7 +4,7 @@
 <html>
  <head>
      <title>Онлайн-магазин</title>
-      <form action="../registrAccount"" method = "post" >
+      <form action="../registrAccount" method = "post" >
  </head>
  <body>
  <h1> Введите свои данные: </h1>
