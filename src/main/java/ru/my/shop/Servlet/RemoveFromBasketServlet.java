@@ -22,7 +22,7 @@ import java.util.List;
 
         Object myBasket = request.getSession().getAttribute("myBasket");
 
-        BasketService.removeFromBasket( (int)id, (List<Product>) myBasket);
+      BasketService.removeFromBasket( (int)id, (List<Product>) myBasket);
 
         RequestDispatcher rd = request.getRequestDispatcher("/viewBasket");
         rd.include(request, response);

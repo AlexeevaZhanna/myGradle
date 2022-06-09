@@ -7,6 +7,9 @@ String name = (String)request.getAttribute("uname");
 out.print("Добро пожаловать, "+name+"!");
 %>
 <html>
+<div>
+    <p><a href="./person/personInfo.jsp">Личные данные</a></p>
+</div>
 
 <div>
     <p><a href="./viewBasket">Корзина</a></p>

@@ -33,6 +33,14 @@ public class Person {
         this.uname = uname;
     }
 
+    public Person(String uname, String lname, String age, String tel, String login) {
+        this.uname = uname;
+        this.lname = lname;
+        this.age = age;
+        this.tel = tel;
+        this.login = login;
+
+    }
     public String getUname() {
         return uname;
     }

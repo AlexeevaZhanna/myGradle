@@ -43,7 +43,6 @@ request.getRequestDispatcher("/person/welcome.jsp").forward(request,response);
                     String uname = row.getString("uname");
                     i++;
                     Person a = new Person(uname);
-                    a.getUname();
                    response.getWriter().append(a.getUname());
            request.setAttribute("uname",a.getUname() );
                     doGET(request, response);

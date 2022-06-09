@@ -32,12 +32,19 @@ public class ProductService extends MySqlConnect {
         System.out.println(row);
         return row;
     }
-    public static ResultSet selectCategoryProduct(String categoryProduct) throws SQLException {
+    public static ResultSet selectManagerProduct(String nameProduct, String idProduct, String priceProduct, String categoryProduct) throws SQLException {
         Statement st = getConnection().createStatement();
-        String query = "SELECT * FROM products WHERE NAME = \"" + categoryProduct +  "\";";
+        String query = "SELECT * FROM products WHERE NAME = \"" + nameProduct +  "\" OR id = \"" + idProduct + "\" OR price = \"" + priceProduct +"\" OR category = \"" + categoryProduct + "\";";
         System.out.println(query);
         ResultSet row = st.executeQuery(query);
         System.out.println(row);
         return row;
+    }
+    public static void deleteProduct(String id) throws SQLException {
+        Statement st = getConnection().createStatement();
+        String query = "DELETE FROM products WHERE id = '" + id + "'";
+        st.executeUpdate(query);
+        int row = st.executeUpdate(query);
+        System.out.println(row);
     }
 }

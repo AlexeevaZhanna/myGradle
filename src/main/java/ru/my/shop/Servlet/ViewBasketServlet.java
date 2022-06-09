@@ -18,6 +18,7 @@ public class ViewBasketServlet extends HttpServlet {
             "  <tr>\n" +
             "    <th>Название</th>\n" +
             "    <th>Цена</th>\n" +
+            "    <th>Кол-во</th>\n" +
             "    <th>Удалить</th>\n" +
             "  </tr>";
 
@@ -31,8 +32,9 @@ public class ViewBasketServlet extends HttpServlet {
         HttpSession httpSession = request.getSession();
 
         List<Product> myBasket = (List<Product>)httpSession.getAttribute("myBasket");
+
         if (myBasket!=null && myBasket.size() != 0) {
-            response.getWriter().append("<p>Ваша корзина:</p>");
+            response.getWriter().append("<p><h2>Ваша корзина:</h2></p>");
 
             response.getWriter().append(TABLE_BEGIN);
         for (int i=0; i < myBasket.size(); i++) {
@@ -40,10 +42,13 @@ public class ViewBasketServlet extends HttpServlet {
             response.getWriter().append("<p>\n" +
                     "    <td>" + p.getName() + "</td>\n" +
                     "    <td>" + p.getPrice() + "</td>\n" +
+                    "    <td>  <input type=number size=4 required min=1 value=1/></td>\n" +
                     "    <td><a href= \"./remove?id=" + i +
                     "\">Удалить</a></td>\n" + "  </tr>");
-            response.getWriter().append("<p><button><a href=\"./buy\">Купить</a></button></p>");
+
         }response.getWriter().append(TABLE_END);
+            response.getWriter().append("<p>Итого: "  + "<output type=count size=10 />" + " рублей" +"</p>");
+        response.getWriter().append("<p><button><a href=\"./buy\">Купить</a></button></p>");
         } else {
             response.getWriter().append("<p>Ваша корзина пуста!</p>");
         }

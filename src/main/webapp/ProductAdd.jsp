@@ -1,3 +1,5 @@
+ <%@ page import="java.util.Date" pageEncoding="UTF-8" %>
+  <%@page import="java.sql.*,java.util.*"%>
 <!DOCTYPE html>
 <!--suppress XmlInvalidId -->
 <html lang="en">
@@ -24,7 +26,8 @@
 
 
 <div>
-    <p><a href="./">Форма поиска товаров</a></p>
+    <p><a href="./SearchProduct.jsp">Форма поиска товаров</a></p>
+    <p><a href="./">На главную</a></p>
 </div>
 </body>
 </html>

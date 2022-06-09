@@ -21,7 +21,6 @@ public class ProductServlet extends HttpServlet {
             throws IOException {
          response.setContentType("text/html;charset=UTF-8");
      String nameProduct = request.getParameter("name");
-     String priceProduct = request.getParameter("price");
      String categoryProduct = request.getParameter("category");
                Connection con = null;
        ServletHelper.populateHtmlBegin(response);
@@ -38,7 +37,7 @@ public class ProductServlet extends HttpServlet {
               response.getWriter().append("<p> Товар: " + name1 + " Цена: " + price1 +" Категория: " + category1 +  "</p>");
               i++;
               response.getWriter().append("<p><a href=\"./addToBasket?name="  + sp.getName() + "\">В корзину</a></p>");
-              }
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -85,7 +84,7 @@ public class ProductServlet extends HttpServlet {
 
         ServletHelper.populateHtmlBegin(response);
         response.getWriter().append("<p>Продукт добавлен</p>");
-        response.getWriter().append("<p><a href=\"./ProductAdd.html\">Добавить еще</a></p>");
+        response.getWriter().append("<p><a href=\"./ProductAdd.jsp\">Добавить еще</a></p>");
         ServletHelper.populateHtmlEnd(response);
     }
 }
